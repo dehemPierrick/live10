@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Loterie 3Wacademy</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="lottery.css">
+</head>
+<body>
+<header>
+    <h1>Loterie 3WAcademy</h1>
+</header>
+<main>
+    <!--
+        implode va faire imploser les données du tableau en les séparant par un " - "
+         [12, 1, 2, 7, 18, 24] >>>>> "12 - 1 - 2 - 7 - 18 - 24"
+    -->
+    <p>Le tirage de la loterie est : <strong><?= implode(' - ', $draw) ?></strong></p>
+</main>
+</body>
+</html>

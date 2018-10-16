@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phase de capture vs phase d'ébullition</title>
+    <style>
+        #fond {
+            box-sizing: border-box;
+            background: blueviolet;
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 30px auto;
+            padding: 50px;
+        }
+
+        #bouton {
+            background: deeppink;
+            display: block;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Phase de capture vs phase d'ébullition</h1>
+<p>En javascript il y'a deux moments ou l'on peut intercepter un évènement:
+</p>
+<ul>
+    <li><b>la phase de capture</b> : où l'on execute d'abord les parents (les éléments les plus profonds)</li>
+    <li><b>la phase de bubbling</b> : où l'on execute d'abord les enfants (les éléments les plus proches de nous)</li>
+</ul>
+<p><img src="images/bubble_phase_72.png" height="479" width="449"/>
+</p>
+<div id="fond">
+    <div id="bouton"></div>
+</div>
+
+
+<script>
+    document.getElementById('fond').addEventListener(
+        'click',
+        function (event) {
+            console.log("salut je suis le fond")
+        },
+        true
+            /*
+             avec le troisième paramètre sur true,
+             cet évênement sera déclenché pendant la phase de capture
+             il sera alors executé avant les autres (le bouton)
+             */
+    );
+
+    document.getElementById('bouton').addEventListener(
+        'click',
+        function (event) {
+            console.log("salut je suis le bouton");
+        }
+    );
+
+</script>
+</body>
+</html>

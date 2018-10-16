@@ -1,0 +1,71 @@
+/*******************************************************
+
+                       GLOBAL
+
+ *******************************************************/
+* { box-sizing: border-box; }
+
+html { font-size: 62.5%; }
+
+body {
+    font-size: 1.6rem;
+    color: #aaa;
+    font-family: 'Roboto', verdana, helvetica, sans-serif;
+    background-color: black;
+}
+
+a {
+    transition: color 500ms;
+    color: #F52;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1, #logo {
+    font-family: 'Spicy Rice', cursive;
+    color: white;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+h2 { color: #DDD }
+
+h3 { color: #999 }
+
+#photo-list {
+    width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#photo-list img {
+    margin: 1em;
+    padding: .5em;
+    transition: background-color 500ms;
+}
+
+#photo-list img:hover,
+#photo-list .hover {
+    background-color: silver;
+}
+
+.selected {
+    background-color: forestgreen;
+}
+
+#total em {
+    font-weight: bold;
+    color: red;
+}

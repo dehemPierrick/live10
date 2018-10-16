@@ -1,0 +1,34 @@
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+body {
+    background: url("../images/concrete_seamless.png");
+}
+
+.toolbar {
+    display: inline-block;
+}
+
+.slider {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.slider img {
+    transform: rotate(-5deg);
+    border: 15px solid white;
+    border-radius: 5px;
+    box-shadow: -3px 3px 15px #000;
+}
+
+.slider figcaption {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 3rem;
+    color: #ee504a;
+    font-weight: bold;
+    text-shadow: -2px 2px 5px #555;
+}

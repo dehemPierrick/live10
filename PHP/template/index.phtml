@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>Bienvenue sur poissons_exotiques.fr</h1>
+    <nav id="main-nav" class="flex">
+        <a id="logo" href="index.php"></a>
+        <a href="home.php">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a id="now-coding" href="https://floobits.com/ADcreatif/Live08/redirect">
+            <img alt="Floobits Status" src="https://floobits.com/ADcreatif/Live10.svg"/>
+        </a>
+    </nav>
+</header>
+<main>
+    <!--
+        je suis le fichier de VUE
+
+        je suis toujours inclu par un tiers (ici index.PHP)
+        je contient peu de php.
+        ON NE LANCE JAMAIS LE PHTML DANS L'URL
+    -->
+    <h1>Page et tout t'as vu !</h1>
+
+    <!-- ouverture et fermeture du php sur la même ligne (pas de php multiligne) -->
+    <?php if (count($messages) > 0) : ?>
+        <ul>
+            <li>aa</li>
+            <li>bb</li>
+            <li>cc</li>
+            <li>dd</li>
+            <li>Vous vous appelez <?= $prenom ?> et vous avez <?= $age ?> ans</li>
+        </ul>
+
+        <!-- utilisation de la syntaxe alternative avec : et endif -->
+    <?php endif ?>
+    <p>Suite du code</p>
+</main>
+<footer>
+    <p>Je suis un pied de page</p>
+</footer>
+</body>
+</html>

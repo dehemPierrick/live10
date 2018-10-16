@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todolist de tatie Ursule</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+    <h1>Gestionnairie de tâches de tatie Ursule :-)</h1>
+    <!-- Formulaire de toute les tâches existantes -->
+    <form action="remove_task.php" method="post" class="content">
+        <ul id="task-list">
+            <?php foreach ($tasks as $key => $task): ?>
+                <li>
+                    <input type="checkbox" id="task-<?= $key ?>" name="indexes[]" value="<?= $key ?>">
+                    <label for="task-<?= $key ?>" class="<?= $task[3] ?>">
+
+                        <!-- affichage du titre de l'évènemement -->
+                        <?= $task[0] ?>
+
+                        <!-- on vérifie que la tâche est passée ou non -->
+                        <?php if (date_create($task[2]) < $now): ?>
+                            <strong>- en retard</strong>
+                        <?php endif ?>
+
+                        <!-- affichage de la description -->
+                        <p><?= $task[1] ?></p>
+                    </label>
+                </li>
+            <?php endforeach ?>
+            <li>
+                <input class="button" type="submit" value="Supprimer" title="Supprimer les tâches sélectionnées" name="remove-task">
+            </li>
+        </ul>
+    </form>
+
+    <!-- Formulaire d'ajout de tâches -->
+    <form action="add_task.php" method="post" class="form">
+        <fieldset>
+            <legend>Informations sur la tâche</legend>
+            <ul>
+                <?php if (!empty($error)): ?>
+                    <li>
+                        <?= $error ?>
+                    </li>
+                <?php endif ?>
+                <li>
+                    <label for="title" class="required">Titre</label>
+                    <input type="text" name="title" id="title">
+                </li>
+                <li>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                </li>
+                <li>
+                    <label for="">Date</label>
+                    <select name="day">
+                        <?php for ($day = 1; $day <= 31; $day++): ?>
+                            <option value="<?= $day ?>"><?= $day ?></option>
+                        <?php endfor ?>
+                    </select>
+                    <select name="month">
+                        <option value="1">Janvier</option>
+                        <option value="2">Février</option>
+                        <option value="3">Mars</option>
+                        <option value="4">Avril</option>
+                        <option value="5">Mai</option>
+                        <option value="6">Juin</option>
+                        <option value="7">Juillet</option>
+                        <option value="8">Août</option>
+                        <option value="9">Septembre</option>
+                        <option value="10">Octobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Décembre</option>
+                    </select>
+                    <select name="year">
+                        <?php for ($year = date('Y'); $year <= date('Y') + 5; $year++): ?>
+                            <option value="<?= $year ?>"><?= $year ?></option>
+                        <?php endfor ?>
+                    </select>
+                </li>
+                <li>
+                    <label>Priorité</label>
+                    <span>
+                            <input type="radio" name="priority" id="low" value="low">
+                            <label for="low">basse</label>
+                            <input type="radio" name="priority" id="medium" checked="checked" value="medium">
+                            <label for="medium">moyenne</label>
+                            <input type="radio" name="priority" id="high" value="high">
+                            <label for="high">haute</label>
+                        </span>
+                </li>
+                <li>
+                    <input class="button" type="submit" value="Ajouter" title="Ajouter une nouvelle tâche" name="add_task">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+table {
+    background-color: black;
+    border-collapse: collapse;
+}
+
+td {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+
+.square {
+    background-color: white;
+    color: red;
+    font-weight: bold;
+}

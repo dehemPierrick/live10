@@ -1,0 +1,28 @@
+<h1>Test LocalStorage</h1>
+
+
+<script>
+    "use strict";
+
+    //__________________________________________________________________________
+    //                        STOCKAGE DES DONNéES
+    //__________________________________________________________________________
+    var datas_toStore = [
+        {firstname: "lalalal", lastname: "ltlytlt", phone: "01020350"},
+        {firstname: "lululul", lastname: "lyululiyulut", phone: "01020350"},
+        {firstname: "lolololo", lastname: "ltjfrfthe", phone: "01020350"},
+        {firstname: "lylylyly", lastname: "hgjrgsrtq", phone: "01020350"}
+    ];
+
+    localStorage.setItem('addressBook', JSON.stringify(datas_toStore));
+
+
+    //__________________________________________________________________________
+    //                      RECUPARATIONS DES DONNéES
+    //__________________________________________________________________________
+    var datas_toDisplay = JSON.parse(localStorage.getItem('addressBook'));
+
+    console.log(datas_toDisplay)
+
+</script>
+

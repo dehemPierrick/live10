@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+}
+
+p {
+    border-radius: 15px;
+    padding: 1em;
+    margin: 1em;
+}
+
+.victory { background-color: #7c7; }
+
+.defeat { background-color: #d88; }
+
+html + div > .defeat {
+}

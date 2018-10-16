@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carnet d'adresses</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/address-book.css">
+
+    <script src="js/utilities.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/addressBook.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<h1><i class="fa fa-book"></i>Carnet d'Adresses</h1>
+
+<!-- Liste des contacts -->
+<ul id="contact-list"></ul>
+
+<!-- affichage des détails d'un contact -->
+<aside id="contact-infos">
+    <h2>NOM DU GARS</h2>
+    <p>Téléphone</p>
+    <a href="">Editer ce contact</a>
+</aside>
+
+<!-- zone d'action du site (ajout/suppression) -->
+<nav>
+    <button id="add-contact"><i class="fa fa-plus"></i></button>
+    <button id="remove-contacts"><i class="fa fa-trash-o"></i></button>
+</nav>
+
+<!-- formulaire d'ajout des contacts -->
+<form id="contact-form" class="standard-form">
+    <ul>
+        <li>
+            <label for="gender">Civilité</label>
+            <select id="gender" name="gender">
+                <option value="Mme.">Madame</option>
+                <option value="M.">Monsieur</option>
+            </select>
+        </li>
+        <li>
+            <label for="lastname">Nom</label>
+            <input id="lastname" name="lastname">
+        </li>
+        <li>
+            <label for="firstname">Prenom</label>
+            <input id="firstname" name="firstname">
+        </li>
+        <li>
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone">
+        </li>
+        <li>
+            <label for="save-contact"></label>
+            <input type="submit" id="save-contact" value="Enregistrer">
+        </li>
+    </ul>
+</form>
+</body>
+</html>

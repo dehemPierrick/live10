@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Traducteur</h1>
+
+<!-- dans la cas ou la formulaire n'as pas encore été transmis -->
+<?php if ($translated === null): ?>
+
+    <form method="post">
+        <input name="word" placeholder="mot à traduire">
+        <select name="direction">
+            <option value="toEnglish">FR -> EN</option>
+            <option value="toFrench">EN -> FR</option>
+        </select>
+        <button class="button" name="translate">Traduire</button>
+    </form>
+
+    <!-- si la traduction n'as pas été trouvé -->
+<?php elseif ($translated === false): ?>
+    <p>Je ne connais pas le mot <?= $word ?></p>
+    <p><a href="">Retour au formulaire</a></p>
+
+    <!-- Si la traduction à été trouvé -->
+<?php else: ?>
+    <p><strong><?= $word ?></strong> peut se traduire par <strong><?= $translated ?></strong></p>
+    <p><a href="">Retour au formulaire</a></p>
+
+<?php endif ?>
+</body>
+</html>

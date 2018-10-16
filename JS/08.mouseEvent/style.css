@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Verdana, sans-serif;
+}
+
+.rectangle {
+    transition: background-color 0.5s;
+    background-color: royalblue;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px
+}
+
+.rectangle.good { background-color: limegreen }
+
+.rectangle.important { background-color: firebrick }
+
+.hidden {
+    display: none
+}
