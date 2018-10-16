@@ -44,25 +44,32 @@ function addContact(gender, lastname, firstname, phone, contactIndex) {
 }
 
 function refreshContactList() {
-    var contacts, html, fullname;
+    var contacts, fullname, ul, a, index;
 
     // récupération de tous les contacts
     contacts = getLocalStorage(STORAGE_NAME);
 
-    // on crée un conteneur html vide
-    html = '';
+    // création d'un conteneur
+    ul = $('<ul>');
 
-    // on boucle sur chacun des contacts pour générer un LI;
-    for (var index = 0; index < contacts.length; index++) {
+    // génération de la nouvelle liste des contacts
+    for (index = 0; index < contacts.length; index++) {
         fullname = contacts[index].firstname + " " + contacts[index].lastname;
-        html += '<li><a href="#" title="éditez le contact ' + fullname + '" data-index="' + index + '" >' + fullname + "</a></li>";
+
+        // on insert le a dans le li et enfin dans le ul, le tout dans la même ligne
+        ul.append($('<li>').append(
+            $('<a>')
+                .attr({href: '#', title: 'éditez le contact ' + fullname})  // modification des attributs
+                .data('index', index)                                         // ajout du data-index
+                .text(fullname)                                               // changement du text du lien
+        ));
     }
 
-    // enfin on ajoute le contenu dans le DOM.
-    // Attention à ne pas modifier le DOM dans une boucle pour éviter
+    // on vire l'ancienne liste ul pour la remplacer par la nouvelle
+    // Attention à ne pas modifier le DOM dans la boucle pour éviter
     // de reconstruire le DOM 20 fois, c'est qui est très gourmand en RAM
-
-    document.getElementById('contact-list').innerHTML = html
+    // on ne fait le append dans le DOM qu'une seule fois à la fin de la fonction
+    $('#contact-list').empty().append(ul);
 
 }
 
