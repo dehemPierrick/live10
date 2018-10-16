@@ -36,7 +36,7 @@ hr {
     border-color: #FAE8CC;
 }
 
-.hide {
+.hide, .hidden {
     display: none;
 }
 

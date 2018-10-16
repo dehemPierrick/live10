@@ -1,6 +1,19 @@
 "use strict";
 
-function addContact(gender, lastname, firstname, phone) {
+const STORAGE_NAME = 'addressBook';
+
+
+function getContactInfos(contactIndex) {
+
+    // récupération des contacts
+    var contactList = getLocalStorage(STORAGE_NAME);
+
+    // renvoi du contact spécifié
+    return contactList[contactIndex];
+}
+
+
+function addContact(gender, lastname, firstname, phone, contactIndex) {
 
     // mise au format du contact.
     var newContact = {
@@ -11,13 +24,22 @@ function addContact(gender, lastname, firstname, phone) {
     };
 
     // récupération de tous les contacts
-    var contacts = getLocalStorage('addressBook');
+    var contacts = getLocalStorage(STORAGE_NAME);
 
-    // ajout d'un nouveau contact
-    contacts.push(newContact);
+    if (contactIndex == undefined) {
+        // ajout d'un nouveau contact
+        contacts.push(newContact);
+
+    } else {
+        // édition d'un contact déjà existant
+        contacts[contactIndex].gender = gender;
+        contacts[contactIndex].lastname = lastname;
+        contacts[contactIndex].firstname = firstname;
+        contacts[contactIndex].phone = phone;
+    }
 
     // enregistre à nouveau tous les contacts
-    saveLocalStorage('addressBook', contacts)
+    saveLocalStorage(STORAGE_NAME, contacts)
 
 }
 
@@ -25,7 +47,7 @@ function refreshContactList() {
     var contacts, html, fullname;
 
     // récupération de tous les contacts
-    contacts = getLocalStorage('addressBook');
+    contacts = getLocalStorage(STORAGE_NAME);
 
     // on crée un conteneur html vide
     html = '';
@@ -42,4 +64,10 @@ function refreshContactList() {
 
     document.getElementById('contact-list').innerHTML = html
 
+}
+
+function clearAddressBook() {
+
+    // pour vider la liste des contact, il suffit de la remplacer par un tableau vide
+    saveLocalStorage(STORAGE_NAME, [])
 }
