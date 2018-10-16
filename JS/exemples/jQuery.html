@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .niceStyle {
+            background-color: blue;
+            color: yellow;
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+
+        // le DOM est bien chargé, l'intérieur de la fonction marchera convenablement
+        // document.addEventListener('DOMContentLoaded', function(){
+        // $(document).on('DOMContentLoaded', function(){
+        $(function () {
+
+            $('a').click(function () {
+                event.preventDefault();
+
+                var new_link = $('<a>');
+
+                new_link.text(this.dataset.title).attr('href', '#');
+
+                $(this).parent().append(new_link);
+
+
+            })
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<header>
+    <h1>Le site trop trop bien en jQuery</h1>
+    <nav id="main-nav" class="flex">
+        <a href="about.php" data-title="Informations">Informations</a>
+        <a href="about.php" data-title="Boutique">Boutique</a>
+        <a href="about.php" data-title="About">About</a>
+        <a href="contact.php" data-title="Contact">Contact</a>
+    </nav>
+
+
+</header>
+
+<main>
+    <img src="https://i.imgur.com/yK0wNs3.png">
+    <h2>Découvrez la librairie jQuery</h2>
+    <p title="el paragrafo">Je suis un paragraphe et je vais te montrer tout ce qu'on peut faire</p>
+</main>
+
+
+<pre>
+        /**********************************************************
+                        COMPARAISON AVEC SELECTEUR SUR
+                        UN ELEMENT PUIS SUR PLUSIEURS
+        ***********************************************************/
+        // natif
+        /*document.querySelector('main p').style.backgroundColor = "red";*/
+
+        // jquery
+        $('main p').css('backgroundColor', 'red');
+
+
+        // natif
+        /*var links = document.querySelectorAll('header a');
+
+        for (var index = 0; index < links.length ; index++) {
+            links[index].classList.add('niceStyle');
+        }*/
+
+
+        // jquery
+        $('header a + a, p').addClass('niceStyle')
+
+
+
+        /***************************************************************
+                        NATIF : propriété
+                        JQUERY : méthode (fonction)
+        *****************************************************************/
+        // JS   domElement.textContent = 'blablalbl';
+        $('p').text('blablalbl');
+
+        // JS   domElement.innerHTML = 'blalbal <b>blablal</b>';
+        $('p').html('blalbal <b>blablal</b>');
+
+
+        // JS   domElement.style.color = 'red';
+        $('p').css('color', 'red');
+
+
+
+        $('main').children('p').text('je <b>suis</b> un paragraphe')
+
+    </pre>
+
+
+</body>
+</html>

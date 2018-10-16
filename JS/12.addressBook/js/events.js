@@ -7,7 +7,10 @@ function onClickRemoveContact() {
 }
 
 function onClickAddContact() {
-    document.getElementById('contact-form').classList.remove('hidden');
+    var contactForm = document.getElementById('contact-form');
+    contactForm.classList.remove('hidden');
+    contactForm.removeAttribute('data-index');
+    contactForm.reset();
 }
 
 function onClickEditContact(event) {

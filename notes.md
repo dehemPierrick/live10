@@ -11,6 +11,16 @@
  - vous avez oublié le $ devant la variable en php
  
  
+
+## jQuery
+il existe 4 sélecteurs jquery
+
+ - ``$('.generic-form input')``                     _identification par sélecteur css_
+ - ``$(document)``                                  _identification d'un élément du DOM_
+ - ``$(function(){ /* le DOM est chargé */ })``     _s'execute quand le DOM est chargé ('DOMContentLoaded' en JS natif)_
+ - ``$('<li>')``                                     _crée une balise qu'on insèrera plus tard dans le DOM avec .append()_
+
+
  
 ## Différences JS / PHP
 
