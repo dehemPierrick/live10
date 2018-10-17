@@ -1,0 +1,37 @@
+<h2><?= $article['title'] ?></h2>
+
+<section>
+    <?= $article['content'] ?>
+</section>
+
+
+<form>
+    <fieldset>
+        <legend>Ajouter un commentaire</legend>
+        <ul>
+            <li>
+                <label>Auteur</label>
+                <input name="author">
+            </li>
+            <li>
+                <label>Email</label>
+                <input name="email">
+            </li>
+            <li>
+                <label>Commentaire</label>
+                <textarea name="content"></textarea>
+            </li>
+        </ul>
+    </fieldset>
+</form>
+
+
+<!-- affichage des commentaires -->
+<section id="comments">
+    <?php foreach ($article['comments'] as $comment) : ?>
+        <?= $comment['author'] ?>
+        <?= $comment['date'] ?>
+        <?= $comment['content'] ?>
+    <?php endforeach; ?>
+</section>
+<footer></footer>
