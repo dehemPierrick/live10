@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <title>Document</title>
+    <title>Comment utiliser Ajax</title>
+    <script src="script.js"></script>
 </head>
 <body>
+<p>Ce script va chercher en ajax des informations sur la commande,</p>
+<p>il faut donc que la base <strong>classicmodels</strong> soit installée</p>
 <table>
+    <caption>Détails de la commande</caption>
     <thead>
     <tr>
         <th>champ</th>
@@ -17,48 +23,35 @@
     </thead>
     <tbody>
     <tr>
-        <td>date de la commande</td>
-        <td></td>
+        <td>numéro de la commande</td>
+        <td id="index"></td>
     </tr>
     <tr>
-        <td>numéro de la commande</td>
-        <td></td>
+        <td>date de la commande</td>
+        <td id="date"></td>
     </tr>
     <tr>
         <td>nom du client</td>
-        <td></td>
+        <td id="customerName"></td>
     </tr>
     <tr>
-        <td>status de la commande</td>
-        <td></td>
+        <td>statut de la commande</td>
+        <td id="status"></td>
     </tr>
     <tr>
         <td>prix total</td>
-        <td></td>
+        <td id="price"></td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <td><input name="orderNumber" placeholder="choisissez le numéro de commande"></td>
+        <td>
+            <button id="getOrder">Rechercher</button>
+        </td>
+    </tr>
+    </tfoot>
 </table>
 
-<button> Afficher les détails de la commande</button>
-<script>
-
-    // fonction appellé après l'execution de la requête ajax
-    function onAjaxButton(order) {
-        document.write(order.title);
-    }
-
-    // fonction de l'évènement click sur le boutton
-    function onClickButton() {
-        // lancement de la requête ajax
-        $.post('ajax.php', 'order_number=1', onAjaxButton, 'json')
-    }
-
-    // début du script quand le DOM est chargé
-    $(function () {
-        // installation de l'écouteur d'evt sur le bouton
-        $('button').click(onClickButton);
-    })
-
-</script>
 </body>
 </html>

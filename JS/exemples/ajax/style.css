@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    width: 500px;
+    margin: 40px auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+caption {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 5px;
+}
+
+tr {
+    transition: background-color 500ms;
+}
+
+thead tr {
+    background-color: #555555;
+    color: white;
+    border: 1px solid
+}
+
+tbody tr:nth-child(even) {
+    background-color: silver;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:hover {
+    background-color: #00968B;
+}
+
+input, button {
+    width: 100%;
+    padding: 5px;
+}
+
