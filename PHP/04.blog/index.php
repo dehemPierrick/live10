@@ -1,5 +1,18 @@
 <?php
 
+// définition d'une page par défaut "home"
+$template = "home";
 
-$template = "admin";
+// récupération de la clé "page" dans l'url pour modifier la page à afficher
+if (array_key_exists('page', $_GET)) {
+
+    // choix de la page
+    $template = $_GET['page'];
+
+    // affichage de la page 404 si la page n'existe pas
+    if (!is_file("pages/$template.phtml")) {
+        $template = 404;
+    }
+}
+
 include "pages/layout.phtml";
