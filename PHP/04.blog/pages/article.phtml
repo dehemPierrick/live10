@@ -1,10 +1,12 @@
-<h2><?= $article['title'] ?></h2>
-
-<section>
+<header class="container">
+    <h2><?= $article['title'] ?></h2>
+    <p>cet article a été écrit par <em><?= $article['author'] ?></em> le <em><?= $article['creationDate'] ?></em></p>
+</header>
+<section class="container justify">
     <?= $article['content'] ?>
 </section>
 
-
+<?php /*
 <form>
     <fieldset>
         <legend>Ajouter un commentaire</legend>
@@ -34,4 +36,5 @@
         <?= $comment['content'] ?>
     <?php endforeach; ?>
 </section>
-<footer></footer>
+
+ */ ?>
