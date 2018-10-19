@@ -69,7 +69,7 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `article_id` (`article_id`);
+  ADD KEY `article_id` (articles_id);
 
 --
 -- AUTO_INCREMENT pour les tables exportées

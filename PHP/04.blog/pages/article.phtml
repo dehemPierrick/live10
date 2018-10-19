@@ -6,22 +6,40 @@
     <?= $article['content'] ?>
 </section>
 
-<?php /*
-<form>
+<form class="container" method="post">
+    <!--
+        On ajoute un champ caché, qui permet lors de la récupération
+        du formulaire d'identifier l'article associé au commentaire
+    　-->
+    <input type="hidden" name="article_id" value="<?= $article['id'] ?>">
     <fieldset>
         <legend>Ajouter un commentaire</legend>
         <ul>
+            <?php if (array_key_exists('error', $_GET)): ?>
+                <li class="error">
+                    <p><?= $_GET['error'] ?></p>
+                </li>
+            <?php endif ?>
+            <?php if (array_key_exists('success', $_GET)): ?>
+                <li class="success">
+                    <p><?= $_GET['success'] ?></p>
+                </li>
+            <?php endif ?>
             <li>
-                <label>Auteur</label>
-                <input name="author">
+                <label for="author">Auteur</label>
+                <input id="author" name="author">
             </li>
             <li>
-                <label>Email</label>
-                <input name="email">
+                <label for="email">Email</label>
+                <input id="email" name="email">
             </li>
             <li>
-                <label>Commentaire</label>
-                <textarea name="content"></textarea>
+                <label for="content">Commentaire</label>
+                <textarea id="content" name="content"></textarea>
+            </li>
+            <li>
+                <label></label>
+                <button name="add_comment">Envoyer</button>
             </li>
         </ul>
     </fieldset>
@@ -29,12 +47,21 @@
 
 
 <!-- affichage des commentaires -->
-<section id="comments">
-    <?php foreach ($article['comments'] as $comment) : ?>
-        <?= $comment['author'] ?>
-        <?= $comment['date'] ?>
-        <?= $comment['content'] ?>
-    <?php endforeach; ?>
+<section id="comments" class="container">
+    <?php if (!empty($comments)): ?>
+        <?php foreach ($comments as $comment) : ?>
+            <article>
+                <header>
+                    par : <?= htmlentities($comment['author']) ?>
+                    le : <?= htmlentities($comment['creationDate']) ?>
+                </header>
+                <main>
+                    <?= htmlentities($comment['content']) ?>
+                </main>
+            </article>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Il n'y a aucun commentaire pour le moment, soyez le premier à en rédiger un !</p>
+    <?php endif ?>
 </section>
 
- */ ?>

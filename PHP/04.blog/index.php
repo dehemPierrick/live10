@@ -1,48 +1,14 @@
 <?php
 
-require_once "php/pdo.php";
 
-// définition d'une page par défaut "home"
-$template = "home";
+// fichier de connexion à pdo (normalement on  le range pas la mais c'est pour par perturber jojo)
+require_once "php\pdo.php";
 
-// récupération de la clé "page" dans l'url pour modifier la page à afficher
-if (array_key_exists('page', $_GET)) {
+// 1. On choisit quelle page afficher (en général VUE\CONTROLLEUR) c'est le DISPATCHER
+require_once "php\dispatcher.php";
 
-    // choix de la page
-    $template = $_GET['page'];
+// 2. On récupère les données à afficher et on reçoit les formulaires, c'est le CONTROLLEUR
+require_once "php\controller.php";
 
-    // affichage de la page 404 si la page n'existe pas
-    if (!is_file("pages/$template.phtml")) {
-        $template = 404;
-    }
-}
-
-//////////////////////////////////////////////////////////////////////////
-
-$articles = fetchAll("SELECT id, title, category FROM articles");
-
-
-// ce long test moche ne sert qu'a vérifier que j'ai une url de type :
-// index.php?page=article&&id=XX
-if (array_key_exists('page', $_GET) &&      // vérification que page est présente
-    $_GET['page'] == 'article' &&           // vérification que page == article
-    array_key_exists('id', $_GET) &&        // vérification que id est présent
-    ctype_digit($_GET['id'])
-)               // vérification que id est bien un nombre
-{
-
-    // filtrage de l'id
-    $article_id = intval($_GET['id']);
-
-    // requête de récupération des infos de l'article
-    $sql = "SELECT id, author, title, content, category, creationDate 
-            FROM articles
-            WHERE id = ?
-    ";
-
-    $article = fetch($sql, [$article_id]);
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-include "pages/layout.phtml";
+// 3. Enfin on affiche le template et les données, c'est la VUE
+include "pages\layout.phtml";

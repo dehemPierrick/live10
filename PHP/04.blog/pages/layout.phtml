@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>El Blogo</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <!-- en tête -->
-<header class="container">
-    <h1>El Blogo</h1>
+<header id="main-header">
+    <div class="container">
+        <a id="logo" href="index.php">
+            <img src="assets/images/noun_Gorilla_1994005.svg">
+            <span>El Blogo</span>
+        </a>
+    </div>
 </header>
 
-
 <!-- contenu principal -->
-<main>
+<main id="main-content">
     <?php include "pages/$template.phtml" ?>
 </main>
 
 <!-- pied de page -->
-<footer class="container">
-    <p>Je suis un pied de page</p>
+<footer id="main-footer">
+    <p class="container">Je suis un pied de page</p>
 </footer>
 </body>
 </html>

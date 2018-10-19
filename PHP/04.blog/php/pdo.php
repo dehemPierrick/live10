@@ -23,3 +23,11 @@ function fetch($sql, array $params = []) {
     $request->execute($params);
     return $request->fetch(PDO::FETCH_ASSOC);
 }
+
+function execute($sql, array $params = []) {
+    global $pdo;
+
+    $request = $pdo->prepare($sql);
+
+    $request->execute($params);
+}
