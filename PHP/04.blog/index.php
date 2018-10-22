@@ -1,5 +1,7 @@
 <?php
 
+// génération d'une constante HOME, qui contient l'url absolue vers la racine du site
+define("HOME", 'http://' . $_SERVER['SERVER_NAME'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 
 // fichier de connexion à pdo (normalement on  le range pas la mais c'est pour par perturber jojo)
 require_once "php\pdo.php";

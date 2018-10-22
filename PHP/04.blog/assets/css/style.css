@@ -94,6 +94,17 @@ button {
     padding: 5px 10px;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+
 form li + li {
     margin-top: 1rem;
 }
@@ -130,10 +141,30 @@ form .success {
     padding: 5px 15px;
 }
 
+form textarea {
+    width: 70%;
+    min-height: 250px;
+}
+
 #comments article + article {
     margin-top: 2rem;
 }
 
 #admin {
     background: #ff000022;
+}
+
+.hidden {
+    display: none;;
+}
+
+#information_message {
+    padding: 15px;
+    background-color: #ffff0020;
+    border-radius: 15px;
+    color: white;
+}
+
+#information_message i {
+    padding-right: 15px;
 }

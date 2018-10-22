@@ -1,0 +1,63 @@
+<form id="add-article" class="container" method="post">
+    <!--
+        On ajoute un champ caché, qui permet lors de la récupération
+        du formulaire d'identifier l'article associé au commentaire
+    　-->
+    <input type="hidden" name="article_id" value="<?= $article['id'] ?>">
+    <fieldset>
+        <legend>Ajouter un article</legend>
+        <ul>
+            <li id="information_message" class="hidden"><i class="fa fa-info-circle"></i><span></span></li>
+            <li>
+                <label for="title">Titre</label>
+                <input id="title" name="title" value="<?= $article['title'] ?>">
+            </li>
+            <li>
+                <label for="category">Catégorie</label>
+                <input id="category" name="category" value="<?= $article['category'] ?>">
+            </li>
+            <li>
+                <label for="author">Auteur</label>
+                <input id="author" name="author" value="<?= $article['author'] ?>">
+            </li>
+            <li>
+                <label for="content">Contenu</label>
+                <textarea id="content" name="content"><?= $article['content'] ?></textarea>
+            </li>
+            <li>
+                <label></label>
+                <button name="add_article" type="submit">Enregistrer</button>
+            </li>
+        </ul>
+    </fieldset>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // attente du chargement du DOM
+    $(function () {
+
+        // écouteur d'évênement sur la soumission du formulaire
+        $('#add-article').submit(function (event) {
+
+            // on bloque l'envoi du formulaire
+            event.preventDefault();
+
+            // récupération des champs du formulaire
+            var datas = $(this).serialize();
+
+            // récupération de l'url en cours
+            var url = window.location.href;
+
+            // enfin on envoit le formulaire en post
+            $.post(url, datas, function () {
+                // quand l'enregistrement à bien été fait en ajax, on affiche un petit message de confirmation
+                var message = $('#information_message');
+                message.children('span').text('modifications enregistrées');
+                message.fadeIn().delay(3000).fadeOut();
+            }
+        });
+
+    });
+    })
+</script>

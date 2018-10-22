@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>El Blogo</title>
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?= HOME ?>assets/css/normalize.css">
+    <link rel="stylesheet" href="<?= HOME ?>assets/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -14,9 +16,14 @@
 <header id="main-header">
     <div class="container">
         <a id="logo" href="index.php">
-            <img src="assets/images/noun_Gorilla_1994005.svg">
+            <img src="<?= HOME ?>assets/images/noun_Gorilla_1994005.svg">
             <span>El Blogo</span>
         </a>
+        <nav>
+            <a href="<?= HOME ?>admin" title="accéder au panneau d'administration">
+                <i class="fa fa-cog"></i>
+            </a>
+        </nav>
     </div>
 </header>
 

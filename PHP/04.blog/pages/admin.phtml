@@ -1,7 +1,7 @@
-<div id="admin">
+<div id="admin" class="container">
 
     <h2>Panneau d'administration</h2>
-
+    <a href="index.php?page=adminEditArticle">Créer un nouvel article</a>
     <table id="articles">
         <caption>Liste des articles</caption>
         <tr>
@@ -18,11 +18,18 @@
                 <td><?= $article['author'] ?></td>
                 <td><?= $article['creationDate'] ?></td>
                 <td>
-                    <a href="">edit</a>
-                    <a href="">remove</a>
+                    <a href="index.php?page=adminEditArticle&id=<?= $article['id'] ?>">
+                        <i class="fa fa-pencil">
+
+                        </i>
+                    </a>
+                    <a href="index.php?page=admin&action=removeArticle&id=<?= $article['id'] ?>">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
         <?php endforeach ?>
+
     </table>
 
     <table id="comments">
@@ -43,48 +50,9 @@
                 <td><?= $comment['creationDate'] ?></td>
                 <td><?= $comment['articles_id'] ?></td>
                 <td>
-                    <a href="">remove</a>
+                    <a href="index.php?page=admin&action=removeComment&id=<?= $comment['id'] ?>">remove</a>
                 </td>
             </tr>
         <?php endforeach ?>
     </table>
 </div>
-
-
-<!--
-
-<form class="container" method="post">
-            <input type="hidden" name="article_id" value="<?= $article['id'] ?>">
-            <fieldset>
-                <legend>Ajouter un commentaire</legend>
-                <ul>
-                    <?php if (array_key_exists('error', $_GET)): ?>
-                        <li class="error">
-                            <p><?= $_GET['error'] ?></p>
-                        </li>
-                    <?php endif ?>
-                    <?php if (array_key_exists('success', $_GET)): ?>
-                        <li class="success">
-                            <p><?= $_GET['success'] ?></p>
-                        </li>
-                    <?php endif ?>
-                    <li>
-                        <label for="author"  >Auteur</label>
-                        <input id="author"  name="author">
-                    </li>
-                    <li>
-                        <label for="email"  >Email</label>
-                        <input id="email"  name="email">
-                    </li>
-                    <li>
-                        <label for="content" >Commentaire</label>
-                        <textarea id="content" name="content"></textarea>
-                    </li>
-                    <li>
-                        <label></label>
-                        <button name="add_comment">Envoyer</button>
-                    </li>
-                </ul>
-            </fieldset>
-        </form>
--->
