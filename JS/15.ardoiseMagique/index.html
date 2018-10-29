@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jQuery-3.3.1.min.js"></script>
+
+    <script src="classes/Pen.class.js"></script>
+    <script src="classes/Canvas.class.js"></script>
+    <script src="classes/ColorPicker.class.js"></script>
+    <script src="classes/Program.class.js"></script>
+</head>
+<body>
+
+<canvas id="canvas" height="400" width="600"></canvas>
+<canvas id="colorPicker" height="400" width="400"></canvas>
+
+<nav id="tools">
+    <button id="clear_slate">Effacer</button>
+    <button id="eraser">Gomme</button>
+    <button id="colorPicker_btn">Pipette</button>
+</nav>
+
+<nav id="changeSize">
+    <button data-size="1" title="tracer un trait rikiki"></button>
+    <button data-size="5" title="tracer un trait normal"></button>
+    <button data-size="10" title="tracer un trait badass"></button>
+</nav>
+
+<nav id="changeColor">
+    <button data-color="red" title="tracer un trait rouge"></button>
+    <button data-color="blue" title="tracer un trait bleu"></button>
+    <button data-color="#0f0" title="tracer un trait vert"></button>
+    <button data-color="#ff6bd2" title="tracer un trait roze"></button>
+</nav>
+
+
+<script src="main.js"></script>
+</body>
+</html>

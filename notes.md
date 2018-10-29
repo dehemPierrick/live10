@@ -59,3 +59,9 @@ Ainsi, on ne peux pas créer une colonne sans le **SELECT** et l'utiliser dans u
     5   HAVING
     6   ORDER BY
     7   LIMIT
+
+## POO
+### Principes importants
+ - encapsulation : ""
+ - composition : ""
+ 
