@@ -12,16 +12,7 @@
     <h1>Painter PHP</h1>
     <p>La POO en PHP c'est vraiment dla balle de cannard #selfpromo</p>
     <svg>
-        <polygon points="60,20  100,80  20,80 " fill="blue" opacity=".5"/>
-        <ellipse cx="250" cy="250" rx="100" ry="50" fill="green" opacity=".7"/>
-
-        <circle cx="550" cy="350" r="100" fill="darkred" opacity=".8"/>
-        <circle cx="350" cy="350" r="50" fill="pink" opacity="1"/>
-
-        <?php foreach ($shapes as $shape): ?>
-            <?= $shape->displayShape() ?>
-        <?php endforeach; ?>
-
+        <?= $html_shapes ?>
     </svg>
 </header>
 

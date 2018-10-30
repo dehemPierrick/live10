@@ -63,7 +63,10 @@ Ainsi, on ne peux pas créer une colonne sans le **SELECT** et l'utiliser dans u
 ## POO
 ### Principes importants
  - **l'encapsulation** : regroupement et sécurisation de propriétés au sein d'une même méthode ``get_width(){return $this->width}``
- - **composition** : ""
- - **héritage** : ""
- - **portée (ou scope)** : ""
+ - **la composition** : composer un objet avec un autre objet et ajoute des propriétés optionelle à un object
+ - **scope, portée ou niveau de visibilité** (public, protected, private)
+ - **l'héritage** : donne accès à des propriétés et méthodes du parent (extention de ses fonctionnalités)
+ - **polymorphisme** : 
+ - **la surchage** :
+ - **l'abstraction**:   
  
