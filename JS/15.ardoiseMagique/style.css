@@ -79,3 +79,6 @@ h3 { color: #999 }
 
 [data-color="#ff6bd2"] { background-color: #ff6bd2; }
 
+.hidden {
+    display: none;
+}

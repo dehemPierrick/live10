@@ -41,7 +41,12 @@ ColorPicker.prototype.onClickColorPicker = function (event) {
 
     var data = this.ctx.getImageData(event.offsetX, event.offsetY, 1, 1);
 
-    console.log(data.data[0], data.data[1], data.data[2]);
+    var color = {
+        red: data.data[0],
+        blue: data.data[1],
+        green: data.data[2]
+    };
 
-    $.event.trigger('slate:onChangeColor');
+    $.event.trigger('ArdoiseMagique:onChangeColor', [color]);
+
 };

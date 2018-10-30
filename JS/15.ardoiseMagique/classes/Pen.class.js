@@ -10,6 +10,10 @@ var Pen = function () {
 
 };
 
+Pen.prototype.colorToRGB = function (color) {
+    return "rgb(" + color.red + "," + color.green + "," + color.green + ")";
+};
+
 
 /**
  * méthodes d'encapsulation des propriétés color & size

@@ -6,6 +6,21 @@ var Program = function () {
     this.colorPicker = new ColorPicker();
 };
 
+Program.prototype.onClickColorPicker_btn = function () {
+    $(this.colorPicker.colorPickerDOM).fadeIn();
+};
+
+Program.prototype.onChangeColor = function (event, color) {
+    // conversion de la couleur au format RGB
+    var rgb = this.pen.colorToRGB(color);
+
+    // changement de couleur pour le crayon
+    this.pen.setColor(rgb);
+
+    // enfin on masque la palette de couleur
+    $(this.colorPicker.colorPickerDOM).fadeOut();
+};
+
 var onClickChangeSize = function (event) {
     // équivalent : jQuery $(event.currentTarget).data('size');
     // on ne peux plus utiliser "this" car on l'a lié à
@@ -43,13 +58,12 @@ Program.prototype.init = function () {
     $('[data-size]').click(onClickChangeSize.bind(this));
     $('[data-color]').click(onClickChangeColor.bind(this));
 
-    $(document).on('slate:onChangeColor', this.onChangeColor);
+    // écouteurs liés à la pipette
+    $('#colorPicker_btn').click(this.onClickColorPicker_btn.bind(this));
+    $(document).on('ArdoiseMagique:onChangeColor', this.onChangeColor.bind(this));
 
 };
 
-Program.prototype.onChangeColor = function () {
-    console.log('test')
-};
 
 // Program.prototype.init = function(){
 //     document.getElementById("clear_slate").addEventListener('click', onClickClearSlate);
