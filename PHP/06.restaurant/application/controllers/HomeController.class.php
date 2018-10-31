@@ -9,11 +9,11 @@ class HomeController {
          * L'argument $queryFields contient l'équivalent de $_GET en PHP natif.
          */
 
-        $kebab = ['salade', 'tomate', 'oignon'];
+        $db = new Database();
+        $meals = $db->query("SELECT name FROM meals");
 
         return [
-            'maVariable' => "je suis le contenu de ma variable",
-            'kebab' => $kebab
+            'meals' => $meals
         ];
     }
 
