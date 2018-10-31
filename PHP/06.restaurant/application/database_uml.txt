@@ -1,0 +1,38 @@
+
+        Meal
+---------------------
+- Id                int,AI,PRIMARY
+- Name              varchar(64)
+- Description
+- Photo
+- QuantityInStock
+- BuyPrice
+- SalePrice
+
+
+       Customer
+----------------------
+- Id
+- FirstName
+- LastName
+- Phone
+- Email
+- Password
+- Address
+- City
+- ZipCode
+- RegisterDate
+
+        Order
+----------------------
+
+     OrderDetails
+----------------------
+
+
+
+**********************************************
+        Cart
+----------------------
+       Booking
+----------------------

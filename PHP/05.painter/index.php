@@ -25,5 +25,3 @@ $program = new Program($renderer);
 $html_shapes = $renderer->getHtmlShapes();
 
 include "index.phtml";
-
-
