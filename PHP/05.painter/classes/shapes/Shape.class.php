@@ -1,6 +1,15 @@
 <?php
 
-class Shape {
+/**
+ * Class Shape
+ * La class abstraite doit respecter quelques règles :
+ *
+ *  - elle ne peut pas être instanciée
+ *  - donc elle ne peut pas avoir de membres ou méthodes privées
+ *  - elle peut déclarer des méthodes abstaites qui seront obligatoirement
+ *    implémentées par ses enfants
+ */
+abstract class Shape {
     protected $location;
     protected $width;
     protected $height;
@@ -33,4 +42,7 @@ class Shape {
     public function setLocation($x, $y) {
         $this->location->move($x, $y);
     }
+
+    // méthode abstraite, ainsi, elle sera OBLIGATOIREMENT implémenté par ses enfants
+    abstract function displayShape(Renderer $renderer);
 }

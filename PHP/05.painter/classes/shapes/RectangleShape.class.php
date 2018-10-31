@@ -1,6 +1,6 @@
 <?php
 
-class Rectangle extends Shape {
+class RectangleShape extends Shape {
 
     // constructeur de classe : cette méthode s'execute
     // à chaque instantiation (new) d'une classe
@@ -9,3 +9,5 @@ class Rectangle extends Shape {
         return $renderer->displayRectangle($this->location, $this->width, $this->height, $this->color, $this->opacity);
     }
 }
+
+

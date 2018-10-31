@@ -1,7 +1,7 @@
 <?php
 
 
-class Triangle {
+class TriangleShape {
 
     private $point1;
     private $point2;

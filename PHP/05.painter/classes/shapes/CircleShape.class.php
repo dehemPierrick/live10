@@ -1,6 +1,6 @@
 <?php
 
-class Circle extends Ellipse {
+class CircleShape extends EllipseShape {
 
     public function setSize($width, $height = null) {
         $this->width = $width;

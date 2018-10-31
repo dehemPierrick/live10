@@ -1,7 +1,7 @@
 <?php
 
 
-class Square extends Rectangle {
+class SquareShape extends RectangleShape {
 
     /*
      * Surcharge de la méthode SetSize
@@ -16,9 +16,3 @@ class Square extends Rectangle {
         $this->height = $width;
     }
 }
-
-
-///////////////////////////////////
-
-$carre = new Square();
-$carre->setSize(200, 200);

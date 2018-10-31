@@ -66,7 +66,7 @@ Ainsi, on ne peux pas créer une colonne sans le **SELECT** et l'utiliser dans u
  - **la composition** : composer un objet avec un autre objet et ajoute des propriétés optionelle à un object
  - **scope, portée ou niveau de visibilité** (public, protected, private)
  - **l'héritage** : donne accès à des propriétés et méthodes du parent (extention de ses fonctionnalités)
- - **polymorphisme** : 
- - **la surchage** :
- - **l'abstraction**:   
+ - **polymorphisme** : même méthode pour différent types 
+ - **la surchage** : extension d'une méthode en respectant son nom, sa portée, ses arguments et le type de la valeur de retour
+ - **l'abstraction**: pas de membres privés, pas d'instance possible, peut déclarer des méthodes abstaites,  
  
