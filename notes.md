@@ -70,3 +70,7 @@ Ainsi, on ne peux pas créer une colonne sans le **SELECT** et l'utiliser dans u
  - **la surchage** : extension d'une méthode en respectant son nom, sa portée, ses arguments et le type de la valeur de retour
  - **l'abstraction**: pas de membres privés, pas d'instance possible, peut déclarer des méthodes abstaites,  
  
+### Le MVC (Model View Controller)
+ - **Controller** : Ce fichier est responsable des données à afficher dans la page, c'est aussi lui qui est sencé gérer la réception d'éventuel formulaire. En général, on à un controlleur pour une page. Il est interdit de faire des requêtes sql dans ce fichier. 
+ - **View** : Fichier qui affiche les données dynamiques, les images, le design... et reggroupe toute la partie HTML
+ - **Model** : 

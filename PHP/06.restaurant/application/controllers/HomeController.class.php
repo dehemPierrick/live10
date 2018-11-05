@@ -1,6 +1,7 @@
 <?php
 
 class HomeController {
+
     public function httpGetMethod(Http $http, array $queryFields) {
         /*
          * Méthode appelée en cas de requête HTTP GET
@@ -9,8 +10,9 @@ class HomeController {
          * L'argument $queryFields contient l'équivalent de $_GET en PHP natif.
          */
 
-        $db = new Database();
-        $meals = $db->query("SELECT name FROM meals");
+        // récupération de tous les repas par le modèle
+        $mealModel = new MealModel();
+        $meals = $mealModel->getMeals();
 
         return [
             'meals' => $meals
