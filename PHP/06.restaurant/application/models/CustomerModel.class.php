@@ -10,6 +10,4 @@ class CustomerModel {
         $db = new Database();
         $db->executeSql($sql, [$firstName, $lastName, $phone, $email, $password, $address, $city, $zipCode]);
     }
-
-
 }

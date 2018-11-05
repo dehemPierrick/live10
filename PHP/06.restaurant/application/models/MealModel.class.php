@@ -3,7 +3,7 @@
 class MealModel {
     function getMeals() {
         $db = new Database();
-        return $db->query("SELECT name FROM meals");
+        return $db->query("SELECT Name, Description, Photo, QuantityInStock, BuyPrice, SalePrice FROM meals");
     }
 
     function createMeal($name, $description, $photo, $quantityInStock, $buyPrice, $salePrice) {

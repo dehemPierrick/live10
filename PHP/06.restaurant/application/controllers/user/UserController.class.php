@@ -8,19 +8,18 @@ class UserController {
     }
 
     function httpPostMethod(Http $http, Array $formField) {
-        $firstName = "";
-        $lastName = "";
-        $phone = "";
+        $firstName = trim($formField['firstName']);
+        $lastName = trim($formField['lastName']);
+        $phone = trim($formField['phone']);
         $email = trim($formField['email']);
         $password = $formField['password'];
-        $address = "";
-        $city = "";
-        $zipCode = "";
+        $address = trim($formField['address']);
+        $city = trim($formField['city']);
+        $zipCode = intval($formField['zipCode']);
 
-        if (!empty($email) and !empty($password)) {
+        if (!empty($firstName) and !empty($lastName) and !empty($email) and !empty($password)) {
             $userModel = new CustomerModel();
             $userModel->create($firstName, $lastName, $phone, $email, $password, $address, $city, $zipCode);
         }
-
     }
 }

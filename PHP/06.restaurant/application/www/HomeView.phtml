@@ -3,13 +3,19 @@
 <!-- Code HTML à écrire -->
 
 
-<p><?php print_r($meals) ?></p>
-
-<!-- Liste des aliments -->
+<!-- Liste des produits alimentaires -->
 <table class="generic-table meal-list">
     <caption>Carte du restaurant</caption>
     <tbody>
-    <!-- Code HTML à écrire -->
-    <!-- image / nom - description / prix -->
+    <?php foreach ($meals as $meal): ?>
+        <tr>
+            <td><img src="<?= $wwwUrl ?>/images/meals/<?= $meal['Photo']; ?>" alt="<?= $meal['Name']; ?>"></td>
+            <td>
+                <strong><?= $meal['Name']; ?></strong>
+                <p><?= $meal['Description']; ?></p>
+            </td>
+            <td class="number"><strong><?= number_format($meal['SalePrice'], 2) ?></strong> €</td>
+        </tr>
+    <?php endforeach; ?>
     </tbody>
 </table>
