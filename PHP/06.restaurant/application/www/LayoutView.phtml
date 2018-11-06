@@ -34,7 +34,17 @@
 
 <!-- Interface utilisateur -->
 <nav class="user-interface">
+    <?= $variablePartout ?>
     <ul class="link-list">
+        <li>
+            <a class="button button-primary"><i class="fa fa-home"></i></a>
+            <?php if ($session->isLogged() == false): ?>
+                <a class="button button-primary">Connexion</a>
+                <a class="button button-primary">Inscription</a>
+            <?php else: ?>
+                <a class="button button-cancel"><i class="fa fa-remove"></i></a>
+            <?php endif ?>
+        </li>
         <!-- Code HTML/PHP à écrire -->
     </ul>
 </nav>
