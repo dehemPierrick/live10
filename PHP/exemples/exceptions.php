@@ -1,27 +1,31 @@
 <?php
 
-function get_random_integer($max) {
-    if ($max > 25)
-        throw new DomainException('Le maximum attendu est 25');
-    return rand(0, $max);
+
+function dire_bonjour($name = null) {
+    if ($name == null) {
+        // on déclenche l'erreur ici donc le code s'arrètera là
+        throw new DomainException("Vous n'avez pas rempli de nom");
+    }
+    echo "<p>salut $name</p>";
 }
 
 try {
-    if (empty($email))
-        throw new DomainException("veuillez remplir l'email");
 
-    if (!$user->login())
-        throw new DomainException('mot de passe invalide');
+    dire_bonjour('Franck');
 
-    if (!$session->start())
-        throw new DomainException('impossible de créer la session')
+    dire_bonjour();
 
-    $random = get_random_integer(50);
+    // cette fonction ne sera pas exécuté
+    dire_bonjour('Albert');
 
 } catch (DomainException $exception) {
-    echo "<h1>Oops il y a une erreur sur la page</h1>
-          <p><strong> $exception->getMessage()</strong></p>
-          <p>Nous allong tout faire pour éviter le problème à nouveau</p>";
+    echo "<p class='error-message'><em>Il y a une erreur :</em> $exception->getMessage()</p>";
 }
+
+// et on continue la suite ici après avoir géré l'erreur
+
+
+
+
 
 
