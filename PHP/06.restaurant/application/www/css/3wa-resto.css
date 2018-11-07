@@ -241,3 +241,8 @@ html {
 .invoice .city {
     text-transform: uppercase;
 }
+
+.done {
+    list-style-type: circle;
+    text-decoration: line-through;
+}

@@ -1,38 +1,47 @@
 <form action="" class="generic-form" method="post">
     <fieldset>
         <legend>Formulaire d'inscription</legend>
+        <?php if (!empty($errorMessage)): ?>
+            <aside class="error-message">
+                <h3>Il des erreurs dans votre formulaire</h3>
+                <ul>
+                    <li><?= $errorMessage ?></li>
+                </ul>
+            </aside>
+        <?php endif ?>
+
         <ul>
             <li class="required">
                 <label for="firstName">Prénom</label>
-                <input id="firstName" type="text" name="firstName">
+                <input id="firstName" type="text" name="firstName" value="<?= $firstName ?>">
             </li>
             <li class="required">
                 <label for="lastName">Nom</label>
-                <input id="lastName" type="text" name="lastName">
+                <input id="lastName" type="text" name="lastName" value="<?= $lastName ?>">
             </li>
             <li class="required">
                 <label for="email">Email</label>
-                <input id="email" type="text" name="email">
+                <input id="email" type="text" name="email" value="<?= $email ?>">
             </li>
             <li class="required">
                 <label for="password">Mot de passe</label>
-                <input id="password" type="password" name="password">
+                <input id="password" type="password" name="password" value="<?= $password ?>">
             </li>
             <li>
                 <label for="phone">Téléphone</label>
-                <input id="phone" type="text" name="phone">
+                <input id="phone" type="text" name="phone" value="<?= $phone ?>">
             </li>
             <li>
                 <label for="address">Adresse</label>
-                <input id="address" type="text" name="address">
+                <input id="address" type="text" name="address" value="<?= $address ?>">
             </li>
             <li>
                 <label for="city">Ville</label>
-                <input id="city" type="text" name="city">
+                <input id="city" type="text" name="city" value="<?= $city ?>">
             </li>
             <li>
                 <label for="zipCode">codePostal</label>
-                <input id="zipCode" type="text" name="zipCode">
+                <input id="zipCode" type="text" name="zipCode" value="<?= $zipCode ?>">
             </li>
             <li>
                 <button class="button button-primary">Envoyer</button>

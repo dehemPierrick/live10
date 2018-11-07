@@ -96,3 +96,11 @@
 .generic-form textarea {
     resize: none;
 }
+
+.generic-form .required label:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+    font-size: 150%;
+    line-height: 0;
+}
