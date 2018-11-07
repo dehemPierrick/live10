@@ -9,3 +9,9 @@
 // CODE PRINCIPAL                                                                      //
 /////////////////////////////////////////////////////////////////////////////////////////
 
+$(function () {
+    var notice = $('.notice');
+    if (notice.find('p').length) {
+        notice.delay(2345).fadeOut(3210);
+    }
+});

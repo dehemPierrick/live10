@@ -1,0 +1,32 @@
+<form action="" class="generic-form" method="post">
+
+
+    <fieldset>
+        <legend>Connectez vous</legend>
+
+        <?php if (count($errors)): ?>
+            <aside class="error-message">
+                <h3>Il des erreurs dans votre formulaire</h3>
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= $error ?></li>
+                    <?php endforeach ?>
+                </ul>
+            </aside>
+        <?php endif ?>
+
+        <ul>
+            <li class="required">
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email">
+            </li>
+            <li class="required">
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" name="password">
+            </li>
+            <li>
+                <button class="button button-primary">Envoyer</button>
+            </li>
+        </ul>
+    </fieldset>
+</form>

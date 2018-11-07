@@ -34,20 +34,26 @@
 
 <!-- Interface utilisateur -->
 <nav class="user-interface">
-    <?= $variablePartout ?>
     <ul class="link-list">
         <li>
-            <a class="button button-primary"><i class="fa fa-home"></i></a>
-            <?php if ($session->isLogged() == false): ?>
-                <a class="button button-primary">Connexion</a>
-                <a class="button button-primary">Inscription</a>
+            <a href="<?= $requestUrl ?>" class="button button-primary"><i class="fa fa-home"></i></a>
+            <?php if ($session->isLogged()): ?>
+                <a href="<?= $requestUrl ?>/user/logout" class="button button-cancel" title="déconnexion"><i class="fa fa-remove"></i></a>
             <?php else: ?>
-                <a class="button button-cancel"><i class="fa fa-remove"></i></a>
+                <a href="<?= $requestUrl ?>/user/login" class="button button-primary" title="accedez à la page de connexion">Connexion</a>
+                <a href="<?= $requestUrl ?>/user" class="button button-primary" title="Créez votre compte">Inscription</a>
             <?php endif ?>
         </li>
         <!-- Code HTML/PHP à écrire -->
     </ul>
 </nav>
+<?php if ($flashbag->hasMessages()): ?>
+    <aside class="notice">
+        <?php foreach ($flashbag->fetchMessages() as $message): ?>
+            <p><?= $message ?></p>
+        <?php endforeach ?>
+    </aside>
+<?php endif ?>
 
 <main>
     <!-- Affichage du template lié à la vue -->

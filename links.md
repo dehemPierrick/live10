@@ -2,9 +2,11 @@
 ## Tutos
  - Enfin comprendre GIT [miximum.fr](https://www.miximum.fr/blog/enfin-comprendre-git/)
 
+
 ## Documentation
  - spécificité et pondération des sélecteurs [css](https://developer.mozilla.org/fr/docs/Apprendre/CSS/Introduction_%C3%A0_CSS/La_cascade_et_l_h%C3%A9ritage)
  - regex, les mails dans tous les langages : [emailregex.com](http://emailregex.com/)
+ - liste des différents design pattern : [wikipedia](https://fr.wikipedia.org/wiki/Patron_de_conception)
  
  ## outils en ligne ##
  

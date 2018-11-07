@@ -3,25 +3,21 @@
 class UserSession {
 
     function __construct() {
-
-        session_start();
-
+        // il faut vérifier que la session n'as pas déjà été démarré
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
-
     function create($id, $firstName, $lastName) {
-
-        $_SESSION = [
-            'user' => [
-                'id' => $id,
-                'fullName' => "$firstName $lastName",
-            ],
-            'isLogged' => true,
-            'cart' => []
-        ];
+        // génération de la session utilisateur
+        $_SESSION['user'] = ['id' => $id, 'fullName' => "$firstName $lastName"];
+        $_SESSION['isLogged'] = true;
+        $_SESSION['cart'] = [];
     }
 
     function delete() {
+        // purge de la session utilisateur
         $_SESSION = [];
         session_destroy();
     }
