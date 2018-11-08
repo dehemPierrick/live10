@@ -39,4 +39,11 @@
 - PriceEach         double
 - Order_Id          int
 
+        bookings
+----------------------
+- Id				int,AI,PRIMARY
+- Customer_Id       int
+- BookingDate       DateTime
+- Quantity          int(2),UNSIGNED
+
 **********************************************
