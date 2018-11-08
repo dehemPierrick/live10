@@ -54,5 +54,3 @@ class UserController {
         $http->redirectTo('/');
     }
 }
-
-echo md5('Alan');

@@ -76,8 +76,8 @@ class Http {
         if (substr($url, 0, 1) !== '/') {
             $url = "/$url";
         }
-
-        header('Location: http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['SCRIPT_NAME'] . $url);
+        $scriptName = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
+        header('Location: http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $scriptName . $url);
         exit();
     }
 

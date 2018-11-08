@@ -15,7 +15,7 @@ class FrontController {
                 'template' => null,
                 'variables' =>
                     [
-                        'requestUrl' => $_SERVER['SCRIPT_NAME'],
+                        'requestUrl' => str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']),
                         'wwwUrl' => str_replace('index.php', 'application/www', $_SERVER['SCRIPT_NAME'])
                     ]
             ];

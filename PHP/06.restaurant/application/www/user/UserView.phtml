@@ -21,15 +21,15 @@
             </li>
             <li class="required">
                 <label for="email">Email</label>
-                <input id="email" type="text" name="email" value="<?= $email ?>" data-required data-name="e-mail">
+                <input id="email" type="text" name="email" value="<?= $email ?>" data-type="email" data-required data-name="e-mail">
             </li>
             <li class="required">
                 <label for="password">Mot de passe</label>
-                <input id="password" type="password" name="password" value="<?= $password ?>" data-required data-name="mot de passe" data-min-length="4">
+                <input id="password" type="password" name="password" value="<?= $password ?>" data-type="password" data-required data-name="mot de passe" data-min-length="4">
             </li>
             <li>
                 <label for="phone">Téléphone</label>
-                <input id="phone" type="text" name="phone" value="<?= $phone ?>" data-name="téléphone" data-max-length="10">
+                <input id="phone" type="text" name="phone" value="<?= $phone ?>" data-type="positiveInteger" data-name="téléphone" data-max-length="10">
             </li>
             <li>
                 <label for="address">Adresse</label>
@@ -41,7 +41,7 @@
             </li>
             <li>
                 <label for="zipCode">codePostal</label>
-                <input id="zipCode" type="text" name="zipCode" value="<?= $zipCode ?>" data-name="code postal" data-max-length="5" data-min-length="5">
+                <input id="zipCode" type="text" name="zipCode" value="<?= $zipCode ?>" data-type="positiveInteger" data-name="code postal" data-max-length="5" data-min-length="5">
             </li>
             <li>
                 <button class="button button-primary">Envoyer</button>
