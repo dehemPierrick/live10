@@ -14,4 +14,4 @@
 $config['autoload-chain'] = false;
 
 // List of all the intercepting filters classes.
-$config['intercepting-filters'] = ['Session', 'Flashbag'];
+$config['intercepting-filters'] = ['Session', 'Flashbag', 'Cart'];

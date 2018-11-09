@@ -1,30 +1,3 @@
-<!-- Message de notification -->
-
-<!-- Code HTML à écrire -->
-<h2>Todo List</h2>
-<ul class="done">
-    <li>Customers - login</li>
-    <li>Customers - register</li>
-    <li>Traitement des erreurs</li>
-    <li>Sessions</li>
-    <li>Filtres d'interceptions</li>
-    <li>Réaffichage des données du formulaire</li>
-    <li>Flashbag</li>
-    <li>Customers - sécurisation des mot de passes</li>
-    <li>Reservations</li>
-</ul>
-<ul>
-    <li>Gestion des Url Rewriting</li>
-    <li>Validation des formulaire</li>
-    <li>Panier</li>
-    <li>Commandes</li>
-    <li>Paiement</li>
-
-    <li>Back Office - produits</li>
-    <li>Back Office - commandes</li>
-    <li>Back Office - customers</li>
-</ul>
-
 <!-- Liste des produits alimentaires -->
 <table class="generic-table meal-list">
     <caption>Carte du restaurant</caption>
@@ -36,8 +9,62 @@
                 <strong><?= $meal['Name']; ?></strong>
                 <p><?= $meal['Description']; ?></p>
             </td>
-            <td class="number"><strong><?= number_format($meal['SalePrice'], 2) ?></strong> €</td>
+            <td class="number">
+                <strong><?= number_format($meal['SalePrice'], 2) ?></strong> €
+                <a class=" button button-primary cta add-to-cart" title="ajouter <?= $meal['Name']; ?> au panier"
+                   href="<?= $requestUrl ?>/cart?action=increase&mealId=<?= $meal['Id']; ?>&quantity=1&urlBack=<?= urlEncode('/') ?>"><i class="fa fa-plus-circle"></i></a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
+
+<em class="petit astérisque que personne ne voit">Les prix sont affichés hors taxe</em>
+
+<div id="modal" class="hidden">
+    <p></p>
+</div>
+
+<h2>Todo List</h2>
+<ul class="done">
+    <li>Customers - login</li>
+    <li>Customers - register</li>
+    <li>Traitement des erreurs</li>
+    <li>Sessions</li>
+    <li>Filtres d'interceptions</li>
+    <li>Réaffichage des données du formulaire</li>
+    <li>Flashbag</li>
+    <li>Customers - sécurisation des mot de passes</li>
+    <li>Reservations</li>
+    <li>Gestion des Url Rewriting</li>
+    <li>Validation des formulaire</li>
+    <li>Panier</li>
+    <li>Ajax</li>
+</ul>
+<ul>
+    <li>Commandes</li>
+    <li>Paiement</li>
+    <li>Back Office - produits</li>
+    <li>Back Office - commandes</li>
+    <li>Back Office - customers</li>
+</ul>
+
+<script>
+    // affichage des données en retour d'ajax
+    var onAjaxSuccess = function (answer) {
+        $('#cart-item').find('span').text(answer['totalQuantityInCart']);
+        $('#modal').text(answer['Quantity'] + ' ' + answer['Name'] + ' ont été ajouté(s) au panier')
+            .fadeIn().delay(3000).fadeOut();
+    };
+
+    // lancement de la requête ajax
+    var onClickAddToCart = function (event) {
+        event.preventDefault();
+        $.get(this.href, 'ajax', onAjaxSuccess, 'json');
+    };
+
+    // écouteur d'évênement sur le bouton addToCart
+    $(function () {
+        $('.add-to-cart').click(onClickAddToCart)
+    });
+</script>

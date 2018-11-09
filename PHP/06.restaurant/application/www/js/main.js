@@ -16,6 +16,11 @@ function checkForms() {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 $(function () {
+
+
+
+
+
     // affichage des erreurs dans les formulaires
     var errorMessage = $('.error-message');
     if (errorMessage.find('li').length > 0) {

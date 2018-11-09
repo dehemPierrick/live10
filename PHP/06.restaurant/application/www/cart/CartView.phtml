@@ -1,0 +1,93 @@
+<table id="cart" class="generic-table">
+    <thead>
+    <tr>
+        <th>image</th>
+        <th>nom</th>
+        <th>quantité</th>
+        <th>prix.u</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <td class="text-right" colspan="3">Prix HT</td>
+        <td><?= number_format($totalPrices['ht'], 2) ?> €</td>
+    </tr>
+    <tr>
+        <td class="text-right" colspan="3">TVA</td>
+        <td><?= number_format($totalPrices['tva'], 2) ?> €</td>
+    </tr>
+    <tr>
+        <td class="text-right" colspan="3">prix TTC</td>
+        <td><?= number_format($totalPrices['ttc'], 2) ?> €</td>
+    </tr>
+    <tr>
+        <!--
+         "toute façon si y'a plus rien dans la panier faut rediriger vers l'accueuil"
+                                                                - Jonathan 09/11/2018
+        -->
+        <td colspan="2" class="left">
+            <a href="<?= $requestUrl ?>/cart?action=clearCart&urlBack=<?= urlencode("/") ?>" class="button button-cancel">Vider</a>
+        </td>
+        <td colspan="2">
+            <?php $disabled = count($cart) > 0 ? '' : 'disabled="disabled"' ?>
+            <a class="button button-primary" <?= $disabled ?>>Valider le panier</a>
+        </td>
+    </tr>
+    </tfoot>
+    <?php if (count($cart) > 0): ?>
+        <?php foreach ($cart as $mealId => $meal): ?>
+            <tr id="<?= $mealId ?>">
+                <td>
+                    <img src="<?= $wwwUrl ?>/images/meals/<?= $meal['Photo'] ?>" alt="<?= $meal['Name'] ?>">
+                </td>
+                <td>
+                    <?= $meal['Name'] ?>
+                </td>
+                <td class="quantity">
+                    <a class="minus add-to-cart" href="<?= $requestUrl ?>/cart?action=decrease&mealId=<?= $meal['Id']; ?>&quantity=1&urlBack=<?= urlEncode('/cart') ?>">
+                        <i class="fa fa-minus-circle"></i>
+                    </a>
+                    <input name="quantity" value="<?= $meal['Quantity'] ?>">
+                    <a class="plus add-to-cart" href="<?= $requestUrl ?>/cart?action=increase&mealId=<?= $meal['Id']; ?>&quantity=1&urlBack=<?= urlEncode('/cart') ?>">
+                        <i class="fa fa-plus-circle"></i>
+                    </a>
+                </td>
+                <td>
+                    <?= number_format($meal['SalePrice'], 2) ?> €
+                </td>
+            </tr>
+        <?php endforeach ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="4" class="center">Vous n'avez pas encore de produit dans votre panier</td>
+        </tr>
+    <?php endif ?>
+</table>
+
+<!--
+    todo : quand la quantité passe à 0 en Ajax, supprimer la ligne
+    todo : quand je change les quantités il faut mettre à jour les prix
+    todo : saisie manuelle des quantités dans l'input
+-->
+
+
+<script>
+    // affichage des données en retour d'ajax
+    var onAjaxSuccess = function (answer) {
+        $('#cart-item').find('span').text(answer['totalQuantityInCart']);
+        $('#' + answer['Id']).find('.quantity input').val(answer['QuantityInCart']);
+
+        //$('#modal').text(answer['Quantity'] + ' '+ answer['Name'] +' ont été ajouté(s) au panier').fadeIn().delay(3000).fadeOut();
+    };
+
+    // lancement de la requête ajax
+    var onClickAddToCart = function (event) {
+        event.preventDefault();
+        $.get(this.href, 'ajax', onAjaxSuccess, 'json');
+    };
+
+    // écouteur d'évênement sur le bouton addToCart
+    $(function () {
+        $('.add-to-cart').click(onClickAddToCart)
+    });
+</script>

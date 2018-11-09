@@ -39,12 +39,15 @@
         <li>
             <a href="<?= $requestUrl ?>" class="button button-primary"><i class="fa fa-home"></i></a>
             <?php if ($session->isLogged()): ?>
+                <a href="<?= $requestUrl ?>/booking" class="button button-primary" title="Reservez votre table">Reservation</a>
+                <a id="cart-item" href="<?= $requestUrl ?>/cart" class="button button-primary" title="Voir le panier">
+                    <i class="fa fa-shopping-cart"></i><span><?= $totalQuantityInCart ?></span>
+                </a>
                 <a href="<?= $requestUrl ?>/user/logout" class="button button-cancel" title="déconnexion"><i class="fa fa-remove"></i></a>
             <?php else: ?>
                 <a href="<?= $requestUrl ?>/user/login" class="button button-primary" title="accedez à la page de connexion">Connexion</a>
                 <a href="<?= $requestUrl ?>/user" class="button button-primary" title="Créez votre compte">Inscription</a>
             <?php endif ?>
-            <a href="<?= $requestUrl ?>/booking" class="button button-primary" title="Reservez votre table">Reservation</a>
 
         </li>
         <!-- Code HTML/PHP à écrire -->

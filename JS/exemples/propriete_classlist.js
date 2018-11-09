@@ -3,7 +3,7 @@
 /*
  https://www.alsacreations.com/article/lire/1498-lapi-classlist.html
  classlist
- .add()
+ .increase()
  .remove()
  .toggle()
  .contains()
