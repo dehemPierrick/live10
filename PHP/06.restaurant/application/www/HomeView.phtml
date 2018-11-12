@@ -11,7 +11,8 @@
             </td>
             <td class="number">
                 <strong><?= number_format($meal['SalePrice'], 2) ?></strong> €
-                <a class=" button button-primary cta add-to-cart" title="ajouter <?= $meal['Name']; ?> au panier"
+                <a class="button button-primary cta add-to-cart" title="ajouter <?= $meal['Name']; ?> au panier"
+                   data-home="true"
                    href="<?= $requestUrl ?>/cart?action=increase&mealId=<?= $meal['Id']; ?>&quantity=1&urlBack=<?= urlEncode('/') ?>"><i class="fa fa-plus-circle"></i></a>
             </td>
         </tr>
@@ -49,22 +50,5 @@
     <li>Back Office - customers</li>
 </ul>
 
-<script>
-    // affichage des données en retour d'ajax
-    var onAjaxSuccess = function (answer) {
-        $('#cart-item').find('span').text(answer['totalQuantityInCart']);
-        $('#modal').text(answer['Quantity'] + ' ' + answer['Name'] + ' ont été ajouté(s) au panier')
-            .fadeIn().delay(3000).fadeOut();
-    };
 
-    // lancement de la requête ajax
-    var onClickAddToCart = function (event) {
-        event.preventDefault();
-        $.get(this.href, 'ajax', onAjaxSuccess, 'json');
-    };
-
-    // écouteur d'évênement sur le bouton addToCart
-    $(function () {
-        $('.add-to-cart').click(onClickAddToCart)
-    });
-</script>
+<script src="<?= $wwwUrl ?>/js/classes/Cart.class.js"></script>

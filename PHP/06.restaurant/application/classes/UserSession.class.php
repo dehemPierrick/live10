@@ -43,7 +43,9 @@ class UserSession {
     }
 
     function getCart() {
+
         return $_SESSION['cart'];
+
     }
 
     function saveCart($cart) {

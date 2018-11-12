@@ -18,8 +18,11 @@ class CartController {
             $mealId = array_key_exists('mealId', $queryFields) ? intval($queryFields['mealId']) : null;
             $quantity = array_key_exists('quantity', $queryFields) ? intval($queryFields['quantity']) : null;
 
+            // on empèche de mettre des quantités négatives dans le panier
+            $quantity = $quantity < 0 ? 0 : $quantity;
+
             try {
-                $newQuantity = $this->cartAction($action, $mealId, $quantity);
+                $this->cartAction($action, $mealId, $quantity);
             } catch (DomainException $exception) {
                 echo $exception->getMessage();
             }
@@ -34,38 +37,48 @@ class CartController {
             $http->redirectTo($queryFields['urlBack']);
         }
 
-        $cart = new CartModel();
-        return [
-            'cart' => $cart->getAllMealInfos(),
-            'totalPrices' => $cart->getTotalPrices()
-        ];
     }
 
     private function cartAction($action, $mealId = null, $quantity = null) {
         // récupération des données pour ajax
         $cartModel = new CartModel();
+        $quantityInCart = 0;
         $mealModel = new MealModel();
-        $meal = $mealModel->getMeal($mealId);
+        $mealInfo = $mealModel->getMeal($mealId);
 
         switch ($action) {
             case "decrease":
-                $meal['QuantityInCart'] = $cartModel->decrease($mealId, $quantity);
+                $quantityInCart = $cartModel->decrease($mealId, $quantity);
                 break;
 
             case "increase":
-                $meal['QuantityInCart'] = $cartModel->increase($mealId, $quantity);
+                $quantityInCart = $cartModel->increase($mealId, $quantity);
+                break;
+
+            case "updateQuantity":
+                $quantityInCart = $cartModel->updateQuantity($mealId, $quantity);
                 break;
 
             case "clearCart":
-                $meal['QuantityInCart'] = 0;
                 $cartModel->clear();
                 break;
         }
 
+
+        // récupération du prix total pour le panier
+        $totalPrice = $cartModel->getTotalPrices();
+
         // finalisation de la réponse ajax
-        $meal['Quantity'] = $quantity;
-        $meal['totalQuantityInCart'] = $cartModel->getTotalQuantity();
-        $this->ajaxMessage = json_encode($meal);
+        $this->ajaxMessage = json_encode([
+            'mealName' => $mealInfo['Name'],
+            'mealId' => $mealInfo['Id'],
+            'quantityInCart' => $quantityInCart,
+            'quantity' => $quantity,
+            'totalQuantityInCart' => $cartModel->getTotalQuantity(),
+            'htPrice' => $totalPrice['ht'],
+            'tva' => $totalPrice['tva'],
+            'ttcPrice' => $totalPrice['ttc']
+        ]);
     }
 
     function httpPostMethod() {

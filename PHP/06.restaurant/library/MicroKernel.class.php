@@ -86,7 +86,6 @@ class MicroKernel {
         } catch (Exception $exception) {
             // Destroy any output buffer contents that could have been added.
             ob_clean();
-
             $frontController->renderErrorView
             (
                 implode('<br>',

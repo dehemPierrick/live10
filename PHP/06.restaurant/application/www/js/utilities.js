@@ -29,7 +29,6 @@ function getRequestUrl() {
      * Cette variable permet de créer des URLs vers des contrôleurs.
      */
     requestUrl = window.location.href;
-    requestUrl = requestUrl.substr(0, requestUrl.indexOf('/index.php') + 10);
 
     return requestUrl;
 }
@@ -58,6 +57,7 @@ function isInteger(value) {
 function isNumber(value) {
     return !isNaN(value);
 }
+
 
 function loadDataFromDomStorage(name) {
     var jsonData;

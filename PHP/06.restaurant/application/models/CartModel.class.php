@@ -40,6 +40,31 @@ class CartModel {
         $userSession->saveCart($cart);
     }
 
+    public function updateQuantity($mealId, $quantity) {
+        // récupération du panier
+        $cart = $this->getAll();
+
+        $current_quantity = array_key_exists($mealId, $cart) ? $cart[$mealId] : 0;
+
+        $current_diff = $quantity - $current_quantity;
+
+        $mealModel = new MealModel();
+        if ($current_diff < 0) {
+            $mealModel->decreaseMeal($mealId, abs($current_diff));
+        } elseif ($current_diff > 0) {
+            $mealModel->increaseMeal($mealId, $current_diff);
+        }
+
+        // on met à jour la quantité dans le panier
+        // (ternaire pour interdire les quantité < 0)
+        $cart[$mealId] = $quantity >= 0 ? $quantity : 0;
+
+        // on sauvegarde les modifications
+        $this->saveAll($cart);
+
+        return $cart[$mealId];
+    }
+
     public function increase($mealId, $quantity = 1) {
         // récupération du panier
         $cart = $this->getAll();

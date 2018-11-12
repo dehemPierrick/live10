@@ -41,7 +41,7 @@
             <?php if ($session->isLogged()): ?>
                 <a href="<?= $requestUrl ?>/booking" class="button button-primary" title="Reservez votre table">Reservation</a>
                 <a id="cart-item" href="<?= $requestUrl ?>/cart" class="button button-primary" title="Voir le panier">
-                    <i class="fa fa-shopping-cart"></i><span><?= $totalQuantityInCart ?></span>
+                    <i class="fa fa-shopping-cart"></i><span><?= $cart->getTotalQuantity(); ?></span>
                 </a>
                 <a href="<?= $requestUrl ?>/user/logout" class="button button-cancel" title="déconnexion"><i class="fa fa-remove"></i></a>
             <?php else: ?>

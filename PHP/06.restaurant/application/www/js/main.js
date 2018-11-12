@@ -11,15 +11,17 @@ function checkForms() {
     }
 }
 
+function cartManagement() {
+    // écouteur d'évênement sur le bouton addToCart
+    var cart = new Cart();
+    cart.init();
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 // CODE PRINCIPAL                                                                      //
 /////////////////////////////////////////////////////////////////////////////////////////
 
 $(function () {
-
-
-
-
 
     // affichage des erreurs dans les formulaires
     var errorMessage = $('.error-message');
@@ -35,4 +37,7 @@ $(function () {
 
     // vérification des formulaires
     checkForms();
+
+    // gestion du panier
+    cartManagement();
 });
