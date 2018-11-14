@@ -67,9 +67,14 @@ class CustomerModel {
         return crypt($password, $hashedPassword) == $hashedPassword;
     }
 
+    function getEmail($id) {
+        $customer = $this->getUser($id);
+        return $customer['Email'];
+    }
+
     function getUser($id) {
         $db = new Database();
-        $sql = "SELECT Id, FirstName,LastName, Phone, Address, City, ZipCode FROM customers WHERE id = ?";
+        $sql = "SELECT Id, FirstName,LastName, Phone, Address, Email, City, ZipCode FROM customers WHERE id = ?";
         $customer = $db->queryOne($sql, [$id]);
 
         return $customer;

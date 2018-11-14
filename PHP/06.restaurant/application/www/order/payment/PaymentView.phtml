@@ -1,18 +1,16 @@
 <p>étape 2/3</p>
 <section>
     <h2>Bons de commande</h2>
-
-    <ul>
-        <li> <?= $customer['FirstName'] ?></li>
-        <li><?= $customer['LastName'] ?></li>
-        <li> <?= $customer['Phone'] ?></li>
-        <li><?= $customer['Address'] ?></li>
-        <li><?= $customer['City'] ?></li>
-        <li><?= $customer['ZipCode'] ?></li>
+    <h3>Adresse de facturation/reception</h3>
+    <ul id="address">
+        <li> <?= $customer['FirstName'] ?> <?= $customer['LastName'] ?></li>
+        <li><i class="fa fa-phone"></i> <?= $customer['Phone'] ?></li>
+        <li><i class="fa fa-envelope"></i> <?= $customer['Address'] ?></li>
+        <li><?= $customer['City'] ?> - <?= $customer['ZipCode'] ?></li>
     </ul>
     <table class="generic-table">
         <thead>
-        <caption>Details de la commande</caption>
+        <caption>Récapitulatif de la commande</caption>
         <tr>
             <th>Nom produit</th>
             <th>Quantité commandée</th>
@@ -46,9 +44,84 @@
             <th>Total TTC</th>
             <td><?= number_format($totalPrice["ttc"], 2) ?> €</td>
         </tr>
-
         </tfoot>
     </table>
-    <button class="button button-primary" type="button">Passer au paiement</button>
+
 
 </section>
+
+<form id="payment-form" method="post" class="generic-form">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
+        </h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <fieldset>
+        <h3>Paiement par stripe</h3>
+        <ul>
+            <li>
+                <label>Numéro de carte</label>
+                <input type="text" value="4242424242424242" class="card-number" name="card-number"
+                       placeholder="numéro de carte">
+            </li>
+            <li>
+                <label>Code de vérification</label>
+                <input type="text" class="card-cvc" name="card-cvc" placeholder="code de vérification">
+            </li>
+            <li><label>Date d'expiration</label>
+                <select class="card-expiry-month" name="card-expiry-month">
+                    <?php for ($month = 1; $month <= 12; $month++): ?>
+                        <?php $d_month = $month < 10 ? '0' . $month : $month; ?>
+                        <?php $selected = $month == date('m') ? 'selected' : ''; ?>
+                        <option value="<?= $month ?>" <?= $selected ?>><?= $d_month ?></option>
+                    <?php endfor; ?>
+                </select> -
+                <select class="card-expiry-year" name="card-expiry-year">
+                    <?php for ($year = date("Y"); $year <= date("Y") + 5; $year++): ?>
+                        <option value="<?= $year ?>"><?= $year ?></option>
+                    <?php endfor; ?>
+                </select>
+            </li>
+            <li>
+                <button type="submit" name="paiement-method">Valider le paiement</button>
+            </li>
+        </ul>
+    </fieldset>
+
+    <button class="button button-primary" type="button">Valider le paiement</button>
+</form>
+
+<script src="https://js.stripe.com/v2/"></script>
+<script>
+    $(function () {
+
+        Stripe.setPublishableKey("<?= STRIPE_PUBLIC_KEY ?>");
+
+        var $form = $('#payment-form'); // On récupère le formulaire
+
+        $form.submit(function () {
+            event.preventDefault();
+
+            $form.find('button').prop('disabled', true); // On désactive le bouton submit
+
+            Stripe.card.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+            }, function (status, response) {
+                if (response.error) { // Ah une erreur !
+                    // On affiche les erreurs
+                    $form.find('.error-message p').text(response.error.message);
+                    $form.find('.error-message').slideDown();
+                    $form.find('button').prop('disabled', false); // On réactive le bouton
+                } else { // Le token a bien été créé
+                    var token = response.id; // On récupère le token
+                    // On crée un champs cachée qui contiendra notre token
+                    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                    $form.get(0).submit(); // On soumet le formulaire
+                }
+            });
+        });
+    });
+</script>

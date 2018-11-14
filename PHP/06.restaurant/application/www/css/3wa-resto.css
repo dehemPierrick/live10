@@ -25,7 +25,7 @@ body {
     font-family: 'Karla', sans-serif;
 }
 
-fieldset {
+fieldset, #address {
     /* structure */
     margin-bottom: 1em;
     padding-left: 1em;
@@ -34,6 +34,10 @@ fieldset {
     /* presentation */
     border-color: #1E593B;
     border-radius: 6px;
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em;
+    list-style: 0;
 }
 
 fieldset legend {
