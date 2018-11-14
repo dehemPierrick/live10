@@ -23,21 +23,33 @@ class PaymentController {
     function httpPostMethod(Http $http, $formFields) {
         $userSession = new UserSession();
         $customerModel = new CustomerModel();
+        $customer_id = $userSession->getId();
+
         $cartModel = new CartModel();
 
-        $cardInfos = $formFields;
-        $userEmail = $customerModel->getEmail($userSession->getId());
+        $userEmail = $customerModel->getEmail($customer_id);
         $amount = round($cartModel->getTotalPrices()['ttc'] * 100); // prix attendu en centimes
+
+        $flasbag = new FlashBag();
 
         try {
             // tentative de paiement
-            $this->stripe_paiement($cardInfos, $userEmail, $amount);
+            $this->stripe_paiement($formFields, $userEmail, $amount);
+
+            $orderModel = new OrderModel();
+            $orderModel->create($customer_id, $cartModel->getAllMealInfos());
+
+            // efface le panier
+            $cartModel = new CartModel();
+            $cartModel->clear(false);
+
+            $flasbag->add('<p>paiement effectué</p>');
 
         } catch (DomainException $exception) {
-            $flasbag = new FlashBag();
             $flasbag->add($exception->getMessage());
-            $http->redirectTo('/');
         }
+
+        $http->redirectTo('/');
     }
 
     function stripe_paiement(array $formFields, $email, $amount) {
@@ -52,15 +64,11 @@ class PaymentController {
                                                    "currency" => "eur", "customer" => $customer->id, "metadata" => array("message" => 'commande passé le ' . date('NOW'))));
 
             switch ($charge->status) {
-                case 'succeeded':
-                    // efface le panier
-                    $cartModel = new CartModel();
-                    $cartModel->clear();
-                    throw new DomainException('<p>paiement effectué</p>');
-                    break;
-
                 case 'pending':
                     throw new DomainException('<p>paiement en attente</p>');
+                    break;
+
+                case "succeeded":
                     break;
 
                 default:

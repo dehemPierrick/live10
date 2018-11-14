@@ -99,7 +99,7 @@
 
         var $form = $('#payment-form'); // On récupère le formulaire
 
-        $form.submit(function () {
+        $form.submit(function (event) {
             event.preventDefault();
 
             $form.find('button').prop('disabled', true); // On désactive le bouton submit

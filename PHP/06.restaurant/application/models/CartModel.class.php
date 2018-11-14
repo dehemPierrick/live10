@@ -46,10 +46,7 @@ class CartModel {
 
         $current_quantity = array_key_exists($mealId, $cart) ? $cart[$mealId] : 0;
 
-        $current_diff = $quantity - $current_quantity;
-        console . log($current_diff);
-        console . log($quantity);
-        console . log($current_quantity);
+        $current_diff = $current_quantity - $quantity;
         $mealModel = new MealModel();
         if ($current_diff < 0) {
             $mealModel->decreaseMeal($mealId, abs($current_diff));
@@ -89,12 +86,14 @@ class CartModel {
         return $cart[$mealId];
     }
 
-    public function clear() {
+    public function clear($restoreStock = true) {
         $mealModel = new MealModel();
 
-        // on remet les produits en stock
-        foreach ($this->getAll() as $meal_id => $quantity) {
-            $mealModel->increaseMeal($meal_id, $quantity);
+        if ($restoreStock) {
+            // on remet les produits en stock
+            foreach ($this->getAll() as $meal_id => $quantity) {
+                $mealModel->increaseMeal($meal_id, $quantity);
+            }
         }
 
         // on enregistre un panier vide

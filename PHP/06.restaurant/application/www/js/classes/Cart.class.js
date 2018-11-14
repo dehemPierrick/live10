@@ -53,7 +53,6 @@ Cart.prototype.onAjaxSuccess = function (answer) {
 
 // lancement de la requête ajax sur l'ajout d'un produit au panier depuis la page d'accueil
 Cart.prototype.onHomeAjaxSuccess = function (answer) {
-    event.preventDefault();
 
     // mise à jour du récapitulatif panier
     this.updateCartQuantity(answer['totalQuantityInCart']);
