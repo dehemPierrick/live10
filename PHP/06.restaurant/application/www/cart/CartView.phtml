@@ -32,8 +32,8 @@
             <a href="<?= $requestUrl ?>/cart?action=clearCart&urlBack=<?= urlencode("/") ?>" class="button button-cancel">Vider</a>
         </td>
         <td colspan="2">
-            <?php $disabled = count($cart) > 0 ? '' : 'disabled="disabled"' ?>
-            <a class="button button-primary" <?= $disabled ?>>Valider le panier</a>
+            <?php $disabled = count($cartItems) > 0 ? '' : 'disabled="disabled"' ?>
+            <a class="button button-primary" <?= $disabled ?>href="<?= $requestUrl ?>/order">Valider le panier</a>
         </td>
     </tr>
     </tfoot>

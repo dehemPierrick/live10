@@ -53,3 +53,14 @@
 .button:active {
     box-shadow: none;
 }
+
+.button-info {
+    background-color: #00bbff;
+    color: white;
+}
+
+.button-info:hover {
+    background-color: #0080FF;
+    box-shadow: 0 0 4px 2px rgba(6, 0, 204, 0.5);
+    color: white;
+}

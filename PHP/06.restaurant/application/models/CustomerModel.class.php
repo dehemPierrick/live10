@@ -66,4 +66,20 @@ class CustomerModel {
         // Si le mot de passe en clair est le même que la version hachée alors renvoie true.
         return crypt($password, $hashedPassword) == $hashedPassword;
     }
+
+    function getUser($id) {
+        $db = new Database();
+        $sql = "SELECT Id, FirstName,LastName, Phone, Address, City, ZipCode FROM customers WHERE id = ?";
+        $customer = $db->queryOne($sql, [$id]);
+
+        return $customer;
+    }
+
+    function updateAddress($firstName, $lastName, $phone, $address, $city, $zipCode, $id) {
+        $db = new Database();
+        $sql = "UPDATE customers SET FirstName = ?, LastName = ?, Phone = ?, Address = ?, City = ?, ZipCode = ? WHERE Id= ?";
+        $customerId = $db->executeSql($sql, [$firstName, $lastName, $phone, $address, $city, $zipCode, $id]);
+
+
+    }
 }

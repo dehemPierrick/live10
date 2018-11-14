@@ -47,7 +47,9 @@ class CartModel {
         $current_quantity = array_key_exists($mealId, $cart) ? $cart[$mealId] : 0;
 
         $current_diff = $quantity - $current_quantity;
-
+        console . log($current_diff);
+        console . log($quantity);
+        console . log($current_quantity);
         $mealModel = new MealModel();
         if ($current_diff < 0) {
             $mealModel->decreaseMeal($mealId, abs($current_diff));

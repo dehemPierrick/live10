@@ -1,0 +1,66 @@
+<p>étape 1/3</p>
+<form action="" class="generic-form" method="post">
+    <fieldset>
+        <legend>Adresse de livraison</legend>
+        <aside class="error-message hidden">
+            <h3>Il des erreurs dans votre formulaire</h3>
+            <ul>
+                <?php if (!empty($errorMessage)): ?>
+                    <li><?= $errorMessage ?></li>
+                <?php endif ?>
+            </ul>
+        </aside>
+
+        <ul>
+            <li class="required">
+                <label for="firstName">Prénom</label>
+                <input id="firstName" type="text" name="FirstName" value="<?= $FirstName ?>" data-required data-name="prénom">
+            </li>
+            <li class="required">
+                <label for="lastName">Nom</label>
+                <input id="lastName" type="text" name="LastName" value="<?= $LastName ?>" data-required data-name="nom">
+            </li>
+            <li class="required">
+                <label for="phone">Téléphone</label>
+                <input id="phone" type="text" name="Phone" value="<?= $Phone ?>" data-type="positiveInteger" data-name="téléphone" data-max-length="10">
+            </li>
+            <li class="required">
+                <label for="address">Adresse</label>
+                <input id="address" type="text" name="Address" value="<?= $Address ?>">
+            </li>
+            <li class="required">
+                <label for="city">Ville</label>
+                <input id="city" type="text" name="City" value="<?= $City ?>">
+            </li>
+            <li class="required">
+                <label for="zipCode">codePostal</label>
+                <input id="zipCode" type="text" name="ZipCode" value="<?= $ZipCode ?>" data-type="positiveInteger" data-name="code postal" data-max-length="5" data-min-length="5">
+            </li>
+            <li>
+                <button id="editAddress" class="button button-info" type="button">Editer le formulaire</button>
+                <button class="button button-primary">Passer à l'étape suivante</button>
+            </li>
+        </ul>
+
+    </fieldset>
+</form>
+
+<script>
+    function onClickEditAdress() {
+        $('input').removeAttr('disabled');
+
+    }
+
+    $('#editAddress').click(this.onClickEditAdress);
+
+    // fonction pour enlever l'attributs disabled des champs inputs pour l'envoi du formulaire
+    $('form').submit(function () {
+        $('input').removeAttr('disabled');
+    });
+    // gestion du formulaire d'adresse
+    $(function () {
+        // dès qu'on arrive sur la page et une fois le DOM Chargé on empêche la modif des champs
+        $('input').attr('disabled', 'disabled');
+
+    });
+</script>

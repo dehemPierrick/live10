@@ -1,0 +1,43 @@
+<form action="" class="generic-form" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Formulaire d'ajout d'article</legend>
+        <aside class="error-message hidden">
+            <h3>Il des erreurs dans votre formulaire</h3>
+            <ul>
+                <?php if (!empty($errorMessage)): ?>
+                    <li><?= $errorMessage ?></li>
+                <?php endif ?>
+            </ul>
+        </aside>
+
+        <ul>
+            <li class="required">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" value="<?= $name ?>">
+            </li>
+            <li class="required">
+                <label for="description">Description</label>
+                <input id="description" type="text" name="description" value="<?= $description ?>">
+            </li>
+            <li class="required">
+                <label for="photo">Photo</label>
+                <input id="photo" type="file" name="photo">
+            </li>
+            <li class="required">
+                <label for="quantity">Quantité</label>
+                <input id="quantity" type="text" name="quantity" value="<?= $quantity ?>">
+            </li>
+            <li class="required">
+                <label for="buyPrice">Prix d'achat</label>
+                <input id="buyPrice" type="text" name="buyPrice" value="<?= $buyPrice ?>">
+            </li>
+            <li class="required">
+                <label for="salePrice">Prix de vente</label>
+                <input id="salePrice" type="text" name="salePrice" value="<?= $salePrice ?>">
+            </li>
+            <li>
+                <button class="button button-primary">Ajouter le produit</button>
+            </li>
+        </ul>
+    </fieldset>
+</form>
